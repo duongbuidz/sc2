@@ -4,7 +4,7 @@ module IMEM (
 );
     reg [31:0] memory [0:1023];
     initial begin
-        $readmemh("memory.dat", memory); // Giả sử file memory.dat chứa chương trình
+        $readmemh("memory.dat", memory); 
     end
     assign instruction = memory[addr];
 endmodule
