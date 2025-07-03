@@ -2,7 +2,7 @@ module RISCV_Single_Cycle (
     input clk, rst_n,
     output [31:0] Instruction_out_top,
     output [31:0] PC_out_top,
-    output [31:0] registers [0:31] // Thêm cổng đầu ra registers
+    output [31:0] registers [0:31]
 );
     wire [31:0] instruction;
     wire [6:0] op;
@@ -88,7 +88,7 @@ module RISCV_Single_Cycle (
         .RegWrite(RegWrite),
         .dataA(dataA),
         .dataB(dataB),
-        .registers(registers) // Kết nối cổng registers
+        .registers(registers)
     );
 
     ImmGen ImmGen_inst (
@@ -125,7 +125,7 @@ module RISCV_Single_Cycle (
         .MemWrite(MemWrite),
         .address(alu_out),
         .write_data(dataB),
-        .манаread_data(read_data)
+        .read_data(read_data) // Fixed typo from manaread_data to read_data
     );
 
     MUX2 muxALU1 (
