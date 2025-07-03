@@ -5,7 +5,7 @@ module RegisterFile (
     input [31:0] WB_out,
     input RegWrite,
     output [31:0] dataA, dataB,
-    output reg [31:0] registers [0:31] // Khai báo registers là cổng đầu ra kiểu reg
+    output reg [31:0] registers [0:31] 
 );
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
