@@ -1,7 +1,8 @@
 module RISCV_Single_Cycle (
     input clk, rst_n,
-    output [31:0] Instruction_out_top, // Cổng đầu ra từ trước
-    output [31:0] PC_out_top // Thêm cổng đầu ra PC_out_top
+    output [31:0] Instruction_out_top,
+    output [31:0] PC_out_top,
+    output [31:0] registers [0:31] // Thêm cổng đầu ra registers
 );
     wire [31:0] instruction;
     wire [6:0] op;
@@ -27,7 +28,7 @@ module RISCV_Single_Cycle (
     assign funct7 = instruction[31:25];
     assign op = instruction[6:0];
     assign Instruction_out_top = instruction;
-    assign PC_out_top = PC_Out; // Gán PC_out_top từ PC_Out
+    assign PC_out_top = PC_Out;
 
     PC PC_inst (
         .clk(clk),
@@ -77,7 +78,7 @@ module RISCV_Single_Cycle (
         .imm_sel(imm_sel)
     );
 
-    RegisterFile Reg_inst ( // Đổi tên instance thành Reg_inst
+    RegisterFile Reg_inst (
         .clk(clk),
         .rst_n(rst_n),
         .addA(rs1),
@@ -87,7 +88,7 @@ module RISCV_Single_Cycle (
         .RegWrite(RegWrite),
         .dataA(dataA),
         .dataB(dataB),
-        .registers(registers) // Thêm cổng đầu ra registers
+        .registers(registers) // Kết nối cổng registers
     );
 
     ImmGen ImmGen_inst (
@@ -124,7 +125,7 @@ module RISCV_Single_Cycle (
         .MemWrite(MemWrite),
         .address(alu_out),
         .write_data(dataB),
-        .read_data(read_data)
+        .манаread_data(read_data)
     );
 
     MUX2 muxALU1 (
