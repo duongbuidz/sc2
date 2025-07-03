@@ -4,7 +4,7 @@ module NextPCSel (
     input [31:0] JALR_target,
     input Branch, Jump,
     input branch_taken,
-    input [6:0] op, // Thêm cổng đầu vào op
+    input [6:0] op, 
     output [31:0] next_PC
 );
     assign next_PC = (Jump && (op == 7'b1100111)) ? JALR_target : // JALR
