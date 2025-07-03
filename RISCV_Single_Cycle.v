@@ -125,7 +125,7 @@ module RISCV_Single_Cycle (
         .MemWrite(MemWrite),
         .address(alu_out),
         .write_data(dataB),
-        .read_data(read_data) // Fixed typo from manaread_data to read_data
+        .read_data(read_data) 
     );
 
     MUX2 muxALU1 (
