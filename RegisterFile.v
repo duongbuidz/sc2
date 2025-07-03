@@ -5,10 +5,8 @@ module RegisterFile (
     input [31:0] WB_out,
     input RegWrite,
     output [31:0] dataA, dataB,
-    output [31:0] registers [0:31] // Thêm cổng đầu ra cho mảng registers
+    output reg [31:0] registers [0:31] // Khai báo registers là cổng đầu ra kiểu reg
 );
-    reg [31:0] registers [0:31]; // Đổi tên regs thành registers
-
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             for (int i = 0; i < 32; i++) begin
